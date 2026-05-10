@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-hero">
+  <h1>About Me</h1>
+  <p>The story behind the code.</p>
+</section>
+
+<section class="section about-section">
+  <div class="about-grid">
+    <div class="about-avatar">
+      <div class="avatar-placeholder">DB</div>
+      <div class="avatar-badge">300+ exercises ✅</div>
+    </div>
+    <div class="about-text">
+      <h2>Hi, I'm {{ profile.name }}</h2>
+      <p>{{ profile.bio }}</p>
+      <p>I believe the best way to learn programming is to build things — even messy, imperfect things. Every project here taught me something new, and every bug I fixed made me a better debugger.</p>
+      <p>Currently exploring web development with Flask and data science with pandas. Always looking for the next interesting problem to solve with Python.</p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <h2 class="section__title">Skills Breakdown</h2>
+  <div class="skills-grid">
+    {% for skill in skills %}
+    <div class="skill-card" style="--delay: {{ loop.index0 * 0.07 }}s">
+      <div class="skill-card__icon">{{ skill.icon }}</div>
+      <div class="skill-card__info">
+        <span class="skill-card__name">{{ skill.name }}</span>
+        <div class="skill-bar">
+          <div class="skill-bar__fill" data-level="{{ skill.level }}"></div>
+        </div>
+        <span class="skill-card__level">{{ skill.level }}%</span>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+<section class="section journey-section">
+  <h2 class="section__title">Programming Journey</h2>
+  <div class="timeline">
+    {% for step in journey %}
+    <div class="timeline__item" style="--delay: {{ loop.index0 * 0.1 }}s">
+      <div class="timeline__dot {% if loop.last %}timeline__dot--current{% endif %}"></div>
+      <div class="timeline__body">
+        <span class="timeline__year">{{ step.year }}</span>
+        <h4 class="timeline__title">{{ step.title }}</h4>
+        <p class="timeline__desc">{{ step.desc }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}

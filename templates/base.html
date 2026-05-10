@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{ profile.name }} · Python Dev</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}" />
+</head>
+<body>
+
+  <!-- ── NOISE OVERLAY ── -->
+  <div class="noise"></div>
+
+  <!-- ── NAV ── -->
+  <nav class="nav">
+    <a class="nav__logo" href="/">DB<span class="dot">.</span></a>
+    <ul class="nav__links">
+      <li><a href="/" class="{{ 'active' if request.endpoint == 'home' }}">Home</a></li>
+      <li><a href="/projects" class="{{ 'active' if request.endpoint == 'projects' }}">Projects</a></li>
+      <li><a href="/about" class="{{ 'active' if request.endpoint == 'about' }}">About</a></li>
+      <li><a href="/contact" class="{{ 'active' if request.endpoint == 'contact' }}">Contact</a></li>
+    </ul>
+    <button class="nav__hamburger" onclick="toggleMenu()">☰</button>
+  </nav>
+
+  <!-- ── PAGE CONTENT ── -->
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <!-- ── FOOTER ── -->
+  <footer class="footer">
+    <p>Built with <span class="py">Python + Flask</span> · {{ profile.name }} © 2024</p>
+  </footer>
+
+  <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>

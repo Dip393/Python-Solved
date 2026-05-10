@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block content %}
+
+<section class="page-hero">
+  <h1>Projects</h1>
+  <p>Real things built with real Python — each one a lesson learned.</p>
+</section>
+
+<section class="section">
+  <div class="projects-grid projects-grid--full">
+    {% for project in projects %}
+    <div class="project-card project-card--big" style="--accent: {{ project.color }}; --delay: {{ loop.index0 * 0.08 }}s">
+      <div class="project-card__emoji">{{ project.emoji }}</div>
+      <h3 class="project-card__title">{{ project.title }}</h3>
+      <p class="project-card__desc">{{ project.desc }}</p>
+      <div class="project-card__tags">
+        {% for tag in project.tags %}
+        <span class="tag">{{ tag }}</span>
+        {% endfor %}
+      </div>
+      <a class="project-card__link" href="#">View on GitHub →</a>
+    </div>
+    {% endfor %}
+  </div>
+</section>
+
+{% endblock %}
